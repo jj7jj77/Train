@@ -9,9 +9,6 @@ Public Class Train
         Static WidthInteger As Integer = TrainPictureBox.Width = Me.Width
         Static HeightInteger As Integer = TrainPictureBox.Height = Me.Height
 
-        XInteger = 0
-        YInteger = 0 
-
         ' Set new X coordinate.
         ' diagonal
         XInteger += 2
