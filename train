@@ -11,11 +11,18 @@ Public Class Train
 
         ' Set new X coordinate.
         ' diagonal
-        XInteger += 2
-        YInteger += 5
+        'XInteger += 2
+        'YInteger += 5
+        'If YInteger > Me.Width Then
+        '    XInteger = 0
+        '    YInteger = 0
+        'End If
+        
+        YInteger = 5
+        XInteger = 2
         If YInteger > Me.Width Then
-            XInteger = 0
-            YInteger = 0
+            TrainPictureBox.XInteger += 1
+            TrainPictureBox.YInteger += 1
         End If
 
         ' Move image.
