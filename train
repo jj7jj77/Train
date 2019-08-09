@@ -4,10 +4,13 @@ Public Class Train
 
     Private Sub TrainTimer_Tick(sender As Object, e As EventArgs) Handles TrainTimer.Tick
         ' Move the graphic across the form. 
-        Static XInteger As Integer = TrainPictureBox.Left
-        Static YInteger As Integer = TrainPictureBox.Top
+        Static XInteger As Integer = TrainPictureBox.Left = 0 
+        Static YInteger As Integer = TrainPictureBox.Top = 0
         Static WidthInteger As Integer = TrainPictureBox.Width = Me.Width
         Static HeightInteger As Integer = TrainPictureBox.Height = Me.Height
+
+        XInteger = 0
+        YInteger = 0 
 
         ' Set new X coordinate.
         ' diagonal
