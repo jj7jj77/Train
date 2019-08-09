@@ -4,7 +4,7 @@ Public Class Train
 
     Private Sub TrainTimer_Tick(sender As Object, e As EventArgs) Handles TrainTimer.Tick
         ' Move the graphic across the form. 
-        Static XInteger As Integer = TrainPictureBox.Left = 0 
+        Static XInteger As Integer = TrainPictureBox.Left = 0
         Static YInteger As Integer = TrainPictureBox.Top = 0
         Static WidthInteger As Integer = TrainPictureBox.Width = Me.Width
         Static HeightInteger As Integer = TrainPictureBox.Height = Me.Height
@@ -17,12 +17,12 @@ Public Class Train
         '    XInteger = 0
         '    YInteger = 0
         'End If
-        
+
         YInteger = 5
         XInteger = 2
         If YInteger > Me.Width Then
-            TrainPictureBox.XInteger += 1
-            TrainPictureBox.YInteger += 1
+            TrainPictureBox.Left += 1
+            TrainPictureBox.Top += 1
         End If
 
         ' Move image.
