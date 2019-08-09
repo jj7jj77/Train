@@ -10,9 +10,13 @@ Public Class Train
         Static HeightInteger As Integer = TrainPictureBox.Height = Me.Height
 
         ' Set new X coordinate.
-        'diagonal
-        '   XInteger += 2
-
+        ' diagonal
+        XInteger += 2
+        YInteger += 5
+        If YInteger < Me.Width Then
+            XInteger = 0
+            YInteger = 0
+        End If
 
         ' Move image.
         TrainPictureBox.SetBounds(XInteger, YInteger, WidthInteger, HeightInteger)
