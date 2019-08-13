@@ -1,0 +1,70 @@
+﻿Public Class Calendar
+
+    Private Sub DisplayBtn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles DisplayGradBtn.Click
+        ' If the date is valid set the calendar and display.
+        Try
+            With GraduationDateTimePicker
+                .Value = Convert.ToDateTime(GradDateTxtBx.Text)
+                .Visible = True
+                MessageBox.Show("Enter a mm/dd/yyyy")
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Invalid Date, put in mm/dd/yyy")
+            GradDateTxtBx.Focus()
+        End Try
+    End Sub
+
+    Private Sub GraduationDateTimePicker_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles GraduationDateTimePicker.ValueChanged
+        ' Calculate the year when the calendar value changes.
+        Dim YearsInteger As Integer
+        Dim PastYearsInteger As Integer
+
+        With GraduationDateTimePicker.Value
+            'graduating this year.
+            If .Year = Now.Year Then
+                YearsInteger = .Year - Now.Year
+                'MessageBox.Show("You will be graduating this year!")
+
+                'graduating soon, maybe next year.
+            ElseIf .DayOfYear >= Now.DayOfYear Then
+                YearsInteger = .Year - Now.Year
+                MessageBox.Show("You are not graduating yet!")
+
+                'already graduated
+            ElseIf .DayOfYear >= Now.Year Then
+                PastYearsInteger = Now.Year - .Year
+                MessageBox.Show("You graduated  " & YearsInteger & " years ago!")
+
+                ' graduating on current date.
+            ElseIf .Day = Now.Day Then
+                'MessageBox.Show("You are graduating today!")
+
+                'Too young to graduate
+            Else
+                'MessageBox.Show("You are too young to graduate")
+            End If
+        End With
+
+        If YearsInteger > 0 Then
+            YrsLeftTxtBx.Text = YearsInteger.ToString()
+        End If
+        If PastYearsInteger < 0 Then
+            YrsLeftTxtBx.Text = YearsInteger.ToString()
+        End If
+    End Sub
+
+    Private Sub ClearBtn_Click(sender As Object, e As EventArgs) Handles ClearBtn.Click
+        GradDateTxtBx.Text = String.Empty
+        YrsLeftTxtBx.Text = String.Empty
+    End Sub
+
+    Private Sub ExitBtn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitBtn.Click
+        'Terminate the project.
+        End
+    End Sub
+
+    Private Sub Calendar_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Activated
+        'Set the calendar to today's date.
+        GraduationDateTimePicker.Value = Today
+    End Sub
+End Class
